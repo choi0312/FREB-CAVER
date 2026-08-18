@@ -14,6 +14,26 @@ JUDO의 `<seg>`, `<think>`, `<answer>` 상태에 저랭크 잔차로 주입합�
 변화가 없어, 이상 과잉 탐지 해결에 대한 사전등록 공동 주장은 확인되지
 않았습니다.
 
+## MMAD 7개 영역별 JUDO 비교
+
+아래 수치는 모델 선택에 사용되지 않은 자산 비중복 1,120문항 holdout
+기준입니다. 각 영역은 GoodsAD, MVTec-AD, MVTec-LOCO, VisA에서 40문항씩
+총 160문항으로 구성됩니다.
+
+| MMAD 영역 | JUDO | FREB-CAVER | 변화 |
+|---|---:|---:|---:|
+| Anomaly Detection | 65.6250% | 65.6250% | 0.0000%p |
+| Defect Analysis | 87.5000% | **88.7500%** | **+1.2500%p** |
+| Defect Classification | 70.6250% | **71.2500%** | **+0.6250%p** |
+| Defect Description | **86.8750%** | 86.2500% | -0.6250%p |
+| Defect Localization | 70.0000% | **73.1250%** | **+3.1250%p** |
+| Object Analysis | 85.0000% | **87.5000%** | **+2.5000%p** |
+| Object Classification | 95.0000% | 95.0000% | 0.0000%p |
+
+7개 영역 중 4개가 향상되고 2개는 동일하며 1개가 하락했습니다. 가장 큰
+향상은 Defect Localization `+3.1250%p`, Object Analysis `+2.5000%p`이고,
+Defect Description은 `-0.6250%p` 하락했습니다. AD는 변화가 없습니다.
+
 전체 MMAD 39,670문항에서는 28-cell macro 81.9063%, micro 81.2150%를
 기록했습니다. 그러나 이 중 6,160문항(15.53%)은 Stage-4 학습 또는 선택에
 사용되었으므로 이 수치는 독립 일반화 성능이 아니라 전체 동작 감사 결과로

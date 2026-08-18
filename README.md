@@ -22,6 +22,29 @@ MMAD paired holdout:
 | FREB-CAVER | **81.0714%** | 65.6250% |
 | Paired change | **+0.9821 pp** | 0.0000 pp |
 
+### Seven MMAD task domains compared with JUDO
+
+The table below uses the same independent, asset-disjoint 1,120-question
+holdout. Each task aggregates 160 paired questions: 40 from each of GoodsAD,
+MVTec-AD, MVTec-LOCO, and VisA.
+
+| MMAD task domain | Frozen public JUDO | FREB-CAVER | Change |
+|---|---:|---:|---:|
+| Anomaly Detection | 65.6250% | 65.6250% | 0.0000 pp |
+| Defect Analysis | 87.5000% | **88.7500%** | **+1.2500 pp** |
+| Defect Classification | 70.6250% | **71.2500%** | **+0.6250 pp** |
+| Defect Description | **86.8750%** | 86.2500% | -0.6250 pp |
+| Defect Localization | 70.0000% | **73.1250%** | **+3.1250 pp** |
+| Object Analysis | 85.0000% | **87.5000%** | **+2.5000 pp** |
+| Object Classification | 95.0000% | 95.0000% | 0.0000 pp |
+
+FREB-CAVER improves four of seven task domains, ties two, and regresses one.
+The largest gains are in Defect Localization (`+3.1250 pp`) and Object Analysis
+(`+2.5000 pp`), while Defect Description decreases slightly (`-0.6250 pp`).
+Because the holdout's AD subset is class-balanced, its task accuracy and
+balanced accuracy are both 65.6250%; the released adapter therefore shows no
+independent AD improvement.
+
 The overall paired change passed the exact McNemar test (`p=0.043285`) and a
 10,000-replicate cluster bootstrap gave a 95% interval of `+0.0908` to
 `+1.8683` percentage points. However, the preregistered joint claim was **not
