@@ -1,0 +1,211 @@
+{
+  "decision_protocol": {
+    "common_prefix_ids": [
+      27,
+      9217
+    ],
+    "common_prefix_text": "<answer",
+    "first_branch_token_ids": [
+      23465,
+      36721,
+      25630,
+      36495
+    ],
+    "first_branch_token_text": [
+      ">A",
+      ">B",
+      ">C",
+      ">D"
+    ],
+    "variants": [
+      [
+        27,
+        9217,
+        23465
+      ],
+      [
+        27,
+        9217,
+        36721
+      ],
+      [
+        27,
+        9217,
+        25630
+      ],
+      [
+        27,
+        9217,
+        36495
+      ]
+    ]
+  },
+  "graft_seed_weights_sha256": "c8fce3d06db4b84b9870bfe7ea42d5532c452c2bacf39f55a39e62a4cbbaafe7",
+  "homotopy": {
+    "alpha": {
+      "visual": 0.0,
+      "writer": 0.5
+    },
+    "caver_weights_sha256": "0f9a37f0a843addafaa8723d8bc935cd05dfb1ba26ee8f213028e0184999370f",
+    "external_router": false,
+    "factorized_schema_version": "graft-caver-factorized-residual-v1",
+    "graft_weights_sha256": "c8fce3d06db4b84b9870bfe7ea42d5532c452c2bacf39f55a39e62a4cbbaafe7",
+    "inference_threshold": false,
+    "schema_version": "graft-caver-residual-homotopy-v1",
+    "variant": "frozen_writer050"
+  },
+  "parameter_count": 33077654,
+  "phase_protocol": {
+    "assistant_prefix_ids": [
+      151644,
+      77091,
+      198
+    ],
+    "seg_start_ids": [
+      27,
+      14607,
+      29
+    ]
+  },
+  "schema_version": "judo-native-deep-residual-v1",
+  "screen_pass": false,
+  "selected_epoch": 2,
+  "statistics": {
+    "architecture": "causal-anomaly-visual-evidence-recurrent-binding-v1",
+    "belief_calls": 1525,
+    "belief_rank": 128,
+    "belief_scale_fraction": 0.5,
+    "belief_temperature": 1.0,
+    "bottleneck_size": 256,
+    "causal_visual_belief_binding": true,
+    "cot_preservation": "exact causal-token gating",
+    "decision_calls": 1595,
+    "decision_hits": 1643,
+    "decision_prefix_ids": [
+      27,
+      9217
+    ],
+    "direction_floor": 0.1,
+    "dual_subspaces": [
+      "matched_normal",
+      "unmatched_defect"
+    ],
+    "factorized_variant": "frozen_writer050",
+    "fixed_scale_fraction": 0.8,
+    "global_scale_fraction": 0.800000011920929,
+    "global_scale_raw": 1.0986123085021973,
+    "hyper_rank": 256,
+    "injection_calls": 1595,
+    "injection_layers": [
+      18,
+      20,
+      22,
+      24,
+      26
+    ],
+    "max_relative_rms_per_site": 0.08,
+    "mean_abs_visual_belief": 0.8540301045433419,
+    "mean_belief_gate": 0.6911449875662586,
+    "mean_decision_residual_ratio_per_site": 0.03228462227039203,
+    "mean_memory_signed_difference_rms": 0.0,
+    "mean_native_difference_rms": 0.6771424831267808,
+    "mean_observed_residual_ratio_per_site": 0.03228462227039203,
+    "mean_replay_residual_ratio_per_site": 0.0,
+    "mean_transport_entropy": 3.2951849052524866,
+    "mean_unmatched_mass": 0.02480000931222932,
+    "memory_batches": 0,
+    "native_memory_batches": 319,
+    "normal_null_intervention_training": true,
+    "num_heads": 8,
+    "predecision_cot_states_modified": true,
+    "replay_calls": 0,
+    "replay_hits": 16268,
+    "replay_max_relative_rms_per_site": 0.02,
+    "replay_scale_fraction": 0.8,
+    "site_fractions": [
+      0.5105136632919312,
+      0.514890193939209,
+      0.5155159831047058,
+      0.4980603754520416,
+      0.48591020703315735
+    ],
+    "trajectory_preference_training": true,
+    "transport_batches": 319,
+    "transport_rank": 64,
+    "transport_temperature": 0.06657710671424866,
+    "unmatched_batches": 319,
+    "unmatched_hidden": 64,
+    "unmatched_prior": 0.05,
+    "visual_alpha": 0.0,
+    "visual_evidence_replay": "assistant <seg>/<think> trajectory",
+    "writer_alpha": 0.5
+  },
+  "validation_metrics": {
+    "accuracy": 0.8053571428571429,
+    "ad_anomaly_recall": 0.7307692307692307,
+    "ad_balanced_accuracy": 0.6689560439560439,
+    "ad_normal_specificity": 0.6071428571428571,
+    "paired_vs_graft_seed": {
+      "both_correct": 445,
+      "both_wrong": 101,
+      "net_rescues": -2,
+      "regressions": 8,
+      "rescues": 6
+    },
+    "paired_vs_public_baseline": {
+      "both_correct": 442,
+      "both_wrong": 101,
+      "net_rescues": 1,
+      "regressions": 8,
+      "rescues": 9
+    },
+    "per_cell_accuracy": {
+      "GoodsAD|Anomaly Detection": 0.5,
+      "GoodsAD|Defect Analysis": 0.95,
+      "GoodsAD|Defect Classification": 0.65,
+      "GoodsAD|Defect Description": 0.9,
+      "GoodsAD|Defect Localization": 0.7,
+      "GoodsAD|Object Analysis": 0.85,
+      "GoodsAD|Object Classification": 0.85,
+      "MVTec-AD|Anomaly Detection": 0.85,
+      "MVTec-AD|Defect Analysis": 1.0,
+      "MVTec-AD|Defect Classification": 0.7,
+      "MVTec-AD|Defect Description": 1.0,
+      "MVTec-AD|Defect Localization": 0.8,
+      "MVTec-AD|Object Analysis": 0.8,
+      "MVTec-AD|Object Classification": 1.0,
+      "MVTec-LOCO|Anomaly Detection": 0.65,
+      "MVTec-LOCO|Defect Analysis": 0.8,
+      "MVTec-LOCO|Defect Classification": 0.75,
+      "MVTec-LOCO|Defect Description": 0.8,
+      "MVTec-LOCO|Defect Localization": 0.7,
+      "MVTec-LOCO|Object Analysis": 0.8,
+      "MVTec-LOCO|Object Classification": 1.0,
+      "VisA|Anomaly Detection": 0.75,
+      "VisA|Defect Analysis": 0.85,
+      "VisA|Defect Classification": 0.5,
+      "VisA|Defect Description": 0.8,
+      "VisA|Defect Localization": 0.7,
+      "VisA|Object Analysis": 0.95,
+      "VisA|Object Classification": 0.95
+    },
+    "per_task_accuracy": {
+      "Anomaly Detection": 0.6875,
+      "Defect Analysis": 0.9,
+      "Defect Classification": 0.65,
+      "Defect Description": 0.875,
+      "Defect Localization": 0.725,
+      "Object Analysis": 0.85,
+      "Object Classification": 0.95
+    },
+    "samples": 560,
+    "source_task_macro_accuracy": 0.8053571428571429
+  },
+  "visual_persistence": {
+    "cot_margin_not_below_direct_rate": 0.9440715883668904,
+    "eligible_direct_correct": 447,
+    "mean_cot_margin_on_direct_correct": 7.681767337807607,
+    "mean_direct_correct_margin": 1.996364653243848
+  },
+  "weights_sha256": "ac3233dbee2de9dd1aaea4acede275ddc2d7a322427795717d9232291e03b0ed"
+}

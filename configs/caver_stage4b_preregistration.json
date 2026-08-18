@@ -1,0 +1,130 @@
+{
+  "schema_version": "judo-stage4b-preregistration-v1",
+  "method": {
+    "name": "Causal Anomaly Visual-Evidence Recurrent Binding",
+    "abbreviation": "CAVER",
+    "architecture": "causal-anomaly-visual-evidence-recurrent-binding-v1",
+    "base_model": "woodavid31/JUDO",
+    "base_revision": "b308d1cb07130d265a51147183cf94607fa07116",
+    "external_router": false,
+    "threshold_tuning": false,
+    "components": [
+      "zero-initialized causal visual-belief writing into partial-CoT, full-CoT, and answer states",
+      "semantic normal-null intervention with query set equal to the normal reference",
+      "same-anchor anomaly, hard-normal, normal-null ordinal preference",
+      "direct-to-partial-to-full correct-margin persistence",
+      "visual-belief-to-semantic-answer binding",
+      "periodic frozen-GRAFT non-AD safety KL"
+    ],
+    "source_hashes": {
+      "architecture_sha256": "60cfdfd08ff1d2e77d81b04e5b7ca3fd8de15f18ebb254c5d8ea05510520d784",
+      "trainer_sha256": "2d1093497a28e6a0b43137dfd775920bec3959d5d625731faade12aec8f1dc77",
+      "evaluator_sha256": "9b6d122bb6b6c42865cf536d61100f17123ed2125d96de0325a520194dd095a0",
+      "unit_tests_sha256": "9c44d73756fd4c7e4de53196bb6e23718a5ec180519031ed05d711e7b2c0d74b"
+    }
+  },
+  "preflight_amendments": [
+    {
+      "amendment": "normalize terminal punctuation when resolving the semantic No option",
+      "reason": "MMAD AD options are serialized as Yes. and No.; the original exact string comparison rejected the first locked training pair",
+      "scope": "normal-null target construction and its unit test only",
+      "optimizer_steps_before_failure": 0,
+      "holdout_evaluated": false,
+      "old_architecture_sha256": "351695ad13a25ce87dcb0822674a91322e36bb61239f68168a02a063214d3dfa",
+      "new_architecture_sha256": "60cfdfd08ff1d2e77d81b04e5b7ca3fd8de15f18ebb254c5d8ea05510520d784",
+      "old_unit_tests_sha256": "5fee9fd8df63ded248f8eca55422347d34b480e9522d085f67c9d88871b9d87c",
+      "new_unit_tests_sha256": "9c44d73756fd4c7e4de53196bb6e23718a5ec180519031ed05d711e7b2c0d74b"
+    }
+  ],
+  "graft_seed": {
+    "architecture": "grounded-reference-anchored-faithful-tuning-v1",
+    "screen_result": "overall improved but AD balanced accuracy unchanged; holdout unopened",
+    "weights_sha256": "c8fce3d06db4b84b9870bfe7ea42d5532c452c2bacf39f55a39e62a4cbbaafe7",
+    "identity_sha256": "b2dcdc61f171ad43f3aee41472bafcc9d57ba73f17e71a7351fcac0805df1b1d",
+    "frozen_parameters": "all except the visual-verdict head",
+    "continued_parameters": [
+      "GRAFT visual-verdict head",
+      "CAVER belief normalization",
+      "CAVER per-layer belief down/up projections",
+      "CAVER per-layer belief gates"
+    ]
+  },
+  "data": {
+    "train_rows": 5600,
+    "validation_rows": 560,
+    "same_anchor_ad_pairs": 515,
+    "holdout_rows": 1120,
+    "holdout_sha256": "ba0cd97dbc9c17395bd0d471db17dcf1ec83428eb9ad5ae9b8555f703233f7ec",
+    "holdout_unique_assets": 1601,
+    "holdout_ad_balance": "20 normal and 20 anomaly rows per source",
+    "cached_input_hashes": {
+      "teacher_train.jsonl": "c55e911cb8dcd4aede4e3ab93cf111228624987ff385e295fced7c66cf4eb235",
+      "teacher_validation.jsonl": "11bd4223ddf6cbccd9416678aa9ae1522228e7236c40b0cb705bff2834066ed0",
+      "baseline_teacher_logits.jsonl": "fd61b2ac10a20c905d925032900bf54a743abf05e93bdced6259212ba145139e",
+      "all_assets.jsonl": "5eeee8bc914c142961c86bc5cfb8b489a4a6f13bdb7b5850f06d610e3845cd2e"
+    }
+  },
+  "training": {
+    "frozen_base": true,
+    "epochs": 2,
+    "optimizer_steps": 1030,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "belief_rank": 128,
+    "belief_temperature": 1.0,
+    "belief_scale_fraction": 0.5,
+    "same_anchor_batch": ["anomaly", "hard-normal", "normal-null"],
+    "trajectory_views": ["direct", "partial-CoT", "full-CoT"],
+    "loss_weights": {
+      "full_answer_ce": 1.0,
+      "progressive_direct_partial_ce": 0.5,
+      "trajectory_margin_persistence": 1.0,
+      "anomaly_hard-normal_rank": 1.0,
+      "hard-normal_normal-null_rank": 0.5,
+      "visual_belief_bce": 0.5,
+      "semantic_visual_binding": 0.5,
+      "non_ad_safety_kl": 1.0
+    },
+    "normal_null_ce_weight": 1.5,
+    "pair_margin": 1.0,
+    "null_margin": 0.5,
+    "safety_frequency": 4,
+    "seed": 20260825
+  },
+  "g4_acceptance": {
+    "actual_model_and_data_first_step": true,
+    "required": [
+      "finite full multi-trajectory loss",
+      "nonzero visual-verdict gradient",
+      "nonzero causal belief-writer gradient and update",
+      "zero frozen-parameter gradients",
+      "checkpoint saved after optimizer step one"
+    ]
+  },
+  "sequential_evaluation": {
+    "validation_gate_before_holdout": {
+      "all_task_noninferiority": "each task no more than 1.25 percentage points below frozen public JUDO",
+      "overall_seed_noninferiority": "not below the completed GRAFT seed",
+      "overall_public_superiority": "strictly greater than frozen public JUDO",
+      "ad_balanced_superiority": "strictly greater than frozen public JUDO and the unchanged GRAFT seed"
+    },
+    "on_validation_gate_failure": "stop without autoregressive evaluation of the holdout",
+    "on_validation_gate_pass": "freeze the final CAVER adapter and evaluate the 1120-row holdout once"
+  },
+  "holdout_analysis": {
+    "primary": "paired autoregressive overall exact multiple-choice accuracy delta versus frozen public JUDO",
+    "co_primary_mechanism": "Anomaly Detection balanced-accuracy delta",
+    "uncertainty": "10000-replicate query-reference-component bootstrap",
+    "paired_test": "two-sided exact McNemar",
+    "claim_policy": {
+      "confirmed_improvement": "overall delta > 0, AD balanced delta > 0, bootstrap lower bound > 0, and McNemar p < 0.05",
+      "promising_candidate": "overall delta > 0 and AD balanced delta > 0 but either inferential criterion is unmet",
+      "mixed_or_rejected": "either overall delta <= 0 or AD balanced delta <= 0"
+    }
+  },
+  "rl_policy": {
+    "not_used_for_stage4b_screen": true,
+    "reason": "first test whether causal evidence binding fixes the identified representation-to-answer disconnect",
+    "conditional_stage4c": "only after Stage 4b passes both validation primary outcomes, use process-level preference optimization without tuning on the locked holdout"
+  }
+}

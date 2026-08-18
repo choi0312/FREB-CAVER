@@ -1,0 +1,136 @@
+{
+  "baseline": {
+    "accuracy": 0.8008928571428572,
+    "ad_anomaly_recall": 0.8625,
+    "ad_balanced_accuracy": 0.65625,
+    "ad_normal_specificity": 0.45,
+    "per_cell_accuracy": {
+      "GoodsAD|Anomaly Detection": 0.55,
+      "GoodsAD|Defect Analysis": 0.9,
+      "GoodsAD|Defect Classification": 0.675,
+      "GoodsAD|Defect Description": 0.875,
+      "GoodsAD|Defect Localization": 0.7,
+      "GoodsAD|Object Analysis": 0.85,
+      "GoodsAD|Object Classification": 0.9,
+      "MVTec-AD|Anomaly Detection": 0.825,
+      "MVTec-AD|Defect Analysis": 0.95,
+      "MVTec-AD|Defect Classification": 0.775,
+      "MVTec-AD|Defect Description": 0.975,
+      "MVTec-AD|Defect Localization": 0.75,
+      "MVTec-AD|Object Analysis": 0.925,
+      "MVTec-AD|Object Classification": 0.975,
+      "MVTec-LOCO|Anomaly Detection": 0.525,
+      "MVTec-LOCO|Defect Analysis": 0.8,
+      "MVTec-LOCO|Defect Classification": 0.75,
+      "MVTec-LOCO|Defect Description": 0.75,
+      "MVTec-LOCO|Defect Localization": 0.6,
+      "MVTec-LOCO|Object Analysis": 0.775,
+      "MVTec-LOCO|Object Classification": 1.0,
+      "VisA|Anomaly Detection": 0.725,
+      "VisA|Defect Analysis": 0.85,
+      "VisA|Defect Classification": 0.625,
+      "VisA|Defect Description": 0.875,
+      "VisA|Defect Localization": 0.75,
+      "VisA|Object Analysis": 0.85,
+      "VisA|Object Classification": 0.925
+    },
+    "per_source_accuracy": {
+      "GoodsAD": 0.7785714285714286,
+      "MVTec-AD": 0.8821428571428571,
+      "MVTec-LOCO": 0.7428571428571429,
+      "VisA": 0.8
+    },
+    "per_task_accuracy": {
+      "Anomaly Detection": 0.65625,
+      "Defect Analysis": 0.875,
+      "Defect Classification": 0.70625,
+      "Defect Description": 0.86875,
+      "Defect Localization": 0.7,
+      "Object Analysis": 0.85,
+      "Object Classification": 0.95
+    },
+    "samples": 1120,
+    "source_task_macro_accuracy": 0.8008928571428572
+  },
+  "candidates": {
+    "factor_caver": {
+      "accuracy": 0.8107142857142857,
+      "ad_anomaly_recall": 0.8625,
+      "ad_balanced_accuracy": 0.65625,
+      "ad_normal_specificity": 0.45,
+      "cluster_bootstrap": {
+        "ci95": [
+          0.0009082652134422275,
+          0.01868327402135228
+        ],
+        "cluster_unit": "query-reference-component",
+        "clusters": 769,
+        "mean": 0.009828081545980954,
+        "replicates": 10000,
+        "seed": 20260826
+      },
+      "delta_accuracy": 0.009821428571428537,
+      "delta_source_task_macro": 0.009821428571428537,
+      "exact_mcnemar": {
+        "discordant": 25,
+        "two_sided_p": 0.043285250663757324
+      },
+      "paired_contingency": {
+        "both_correct": 890,
+        "both_wrong": 205,
+        "net_rescues": 11,
+        "regressions": 7,
+        "rescues": 18
+      },
+      "per_cell_accuracy": {
+        "GoodsAD|Anomaly Detection": 0.55,
+        "GoodsAD|Defect Analysis": 0.925,
+        "GoodsAD|Defect Classification": 0.725,
+        "GoodsAD|Defect Description": 0.85,
+        "GoodsAD|Defect Localization": 0.725,
+        "GoodsAD|Object Analysis": 0.9,
+        "GoodsAD|Object Classification": 0.9,
+        "MVTec-AD|Anomaly Detection": 0.825,
+        "MVTec-AD|Defect Analysis": 0.95,
+        "MVTec-AD|Defect Classification": 0.75,
+        "MVTec-AD|Defect Description": 0.975,
+        "MVTec-AD|Defect Localization": 0.825,
+        "MVTec-AD|Object Analysis": 0.95,
+        "MVTec-AD|Object Classification": 0.975,
+        "MVTec-LOCO|Anomaly Detection": 0.525,
+        "MVTec-LOCO|Defect Analysis": 0.825,
+        "MVTec-LOCO|Defect Classification": 0.725,
+        "MVTec-LOCO|Defect Description": 0.75,
+        "MVTec-LOCO|Defect Localization": 0.625,
+        "MVTec-LOCO|Object Analysis": 0.8,
+        "MVTec-LOCO|Object Classification": 1.0,
+        "VisA|Anomaly Detection": 0.725,
+        "VisA|Defect Analysis": 0.85,
+        "VisA|Defect Classification": 0.65,
+        "VisA|Defect Description": 0.875,
+        "VisA|Defect Localization": 0.75,
+        "VisA|Object Analysis": 0.85,
+        "VisA|Object Classification": 0.925
+      },
+      "per_source_accuracy": {
+        "GoodsAD": 0.7964285714285714,
+        "MVTec-AD": 0.8928571428571429,
+        "MVTec-LOCO": 0.75,
+        "VisA": 0.8035714285714286
+      },
+      "per_task_accuracy": {
+        "Anomaly Detection": 0.65625,
+        "Defect Analysis": 0.8875,
+        "Defect Classification": 0.7125,
+        "Defect Description": 0.8625,
+        "Defect Localization": 0.73125,
+        "Object Analysis": 0.875,
+        "Object Classification": 0.95
+      },
+      "samples": 1120,
+      "source_task_macro_accuracy": 0.8107142857142857
+    }
+  },
+  "samples": 1120,
+  "schema_version": "judo-refdiff-pilot-analysis-v1"
+}

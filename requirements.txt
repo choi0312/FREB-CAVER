@@ -1,0 +1,9 @@
+accelerate>=1.6,<2
+huggingface-hub>=0.34,<1
+numpy>=1.26,<3
+Pillow>=11,<13
+requests>=2.32,<3
+safetensors==0.5.3
+setuptools>=68,<82
+tqdm>=4.67,<5
+transformers==4.57.3

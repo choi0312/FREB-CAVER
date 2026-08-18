@@ -1,0 +1,111 @@
+{
+  "schema_version": "judo-caver-factor-confirmatory-preregistration-v1",
+  "sealed_before_holdout_inference": true,
+  "seed": 20260826,
+  "infrastructure_amendment": {
+    "scope": "identity-field lookup only",
+    "reason": "Attempt 1 checked a nonexistent top-level homotopy_alpha field; the immutable adapter stores the same sealed alpha values at homotopy.alpha.",
+    "attempt_1_holdout_assets_prepared": false,
+    "attempt_1_inference_rows": 0,
+    "model_or_evaluation_change": false,
+    "superseded_job_sha256": "fbdfa02e5cd1abfc43b3305fd32eb3118405f136b26dcddf31fecbeabcd89319"
+  },
+  "objective": "One-time paired confirmatory evaluation of the frozen-estimator half-strength recurrent CAVER adapter against unmodified public JUDO on an asset-disjoint balanced holdout.",
+  "method": {
+    "name": "Frozen-estimator recurrent visual-evidence binding",
+    "architecture": "causal-anomaly-visual-evidence-recurrent-binding-v1",
+    "external_router": false,
+    "threshold_tuning": false,
+    "visual_estimator_trainable": false,
+    "visual_alpha": 0.0,
+    "recurrent_writer_alpha": 0.5,
+    "post_seal_tuning_forbidden": true
+  },
+  "candidate": {
+    "path": "ablation/seeds/caver_factor_grid_seed20260825/frozen_writer050",
+    "weights_sha256": "ac3233dbee2de9dd1aaea4acede275ddc2d7a322427795717d9232291e03b0ed",
+    "identity_sha256": "602ef951adf0ffbb783a803f532ae86462304d1ca30251bef65daf419a37f829"
+  },
+  "baseline": {
+    "repository": "woodavid31/JUDO",
+    "revision": "b308d1cb07130d265a51147183cf94607fa07116",
+    "mode": "published post-GRPO checkpoint with official CoT generation"
+  },
+  "holdout": {
+    "path": "ablation/inputs/graft_stage4_seed20260824/holdout.jsonl",
+    "sha256": "ba0cd97dbc9c17395bd0d471db17dcf1ec83428eb9ad5ae9b8555f703233f7ec",
+    "rows": 1120,
+    "asset_disjoint": true,
+    "balanced_cells": 28,
+    "ad_rows": 160,
+    "ad_normal_rows": 80,
+    "ad_anomaly_rows": 80,
+    "previously_evaluated_for_this_method": false,
+    "maximum_evaluations": 1
+  },
+  "public_validation": {
+    "selection_status": "candidate fixed after a three-variant mechanistic factorization screen",
+    "samples": 560,
+    "judo_accuracy": 0.8035714285714286,
+    "candidate_accuracy": 0.8107142857142857,
+    "judo_ad_balanced_accuracy": 0.646978021978022,
+    "candidate_ad_balanced_accuracy": 0.6648351648351649,
+    "judo_ad_anomaly_recall": 0.8653846153846154,
+    "candidate_ad_anomaly_recall": 0.8653846153846154,
+    "judo_ad_normal_specificity": 0.42857142857142855,
+    "candidate_ad_normal_specificity": 0.4642857142857143,
+    "graft_accuracy": 0.8089285714285714,
+    "graft_visual_persistence": 0.9401330376940133,
+    "candidate_visual_persistence": 0.9426048565121413,
+    "paired_vs_judo_rescues": 5,
+    "paired_vs_judo_regressions": 1
+  },
+  "evaluation": {
+    "inference": "official autoregressive CoT generation",
+    "baseline_first": true,
+    "same_manifest_and_generation_configuration": true,
+    "primary_endpoint": "paired all-row accuracy delta",
+    "co_primary_mechanistic_endpoint": "AD balanced-accuracy delta",
+    "secondary_endpoints": [
+      "AD anomaly recall",
+      "AD normal specificity",
+      "per-task accuracy",
+      "strict-format validity"
+    ],
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 20260826,
+      "cluster_unit": "query-reference-component",
+      "confidence": 0.95
+    },
+    "paired_test": "two-sided exact McNemar"
+  },
+  "claim_rule": {
+    "confirmed_improvement": "overall delta > 0, AD balanced delta > 0, bootstrap 95% lower bound > 0, and McNemar p < 0.05",
+    "directionally_consistent": "overall delta > 0 and AD balanced delta > 0 without satisfying both significance conditions",
+    "not_confirmed": "either overall delta <= 0 or AD balanced delta <= 0"
+  },
+  "source_hashes": {
+    "6685ea0dafff258acbd2769afbb25ed60cc79fea3960787ef32aaa9b7a98739b": "ablation/requirements-frozen-ce-colab.txt",
+    "ff74943a55268c61599cb438e428e18926dca087f143fd20e267af16be094f82": "ablation/prepare_assets.py",
+    "700913e9fea1732c8d8b2213d6fdf23aa9deea780e48f3f0d2e44a9bc2370291": "ablation/prepare_mmad_manifest_subset.py",
+    "6502518bbebea38e793303f2993e7581dce4a3069cbbbc1810c1cf93afcfa90e": "ablation/mmad_tools.py",
+    "c2aea88c65a4e2e18ca30e99dc6c74ff495cdec0cadaed03c6f208a8776e8408": "ablation/eval_manifest.py",
+    "0b970839a7a32c51945aaa4adfda43c40ee317b9043200152a63cb512a43aae3": "ablation/provenance.py",
+    "6c7c3589ebe1fe11325eb53db684e6cde72f0a609324c19ee0393e9286fa8f22": "ablation/judo_aligned_ce.py",
+    "4cf075d66dd137fe64271ef653dcc9bcfc7d0c88ea5c0d1307dedf3e6337c7f4": "ablation/judo_semantic_refdiff.py",
+    "8a2404e627a93a619f01b6527aa82cbbaebcc8aa79b870452b1130d876ce613b": "ablation/judo_native_deep_residual.py",
+    "30826e7d6227ffe62f9df10a5e26f3096c3ad3bbd8905fabb32d2dc04c392bde": "ablation/judo_graft.py",
+    "60cfdfd08ff1d2e77d81b04e5b7ca3fd8de15f18ebb254c5d8ea05510520d784": "ablation/judo_caver.py",
+    "f4fb1f517ba6e7dc66836e125eede90aa19684cae5a3a0935234d7d6edfbef7f": "ablation/train_judo_aligned_ce.py",
+    "940b679a1ba9b968dce8a39b0dcb7419ff88d912376b48544a91411078e4d52e": "ablation/train_judo_semantic_refdiff.py",
+    "6e218a5a3ad950277a0306bce64eae9539661122878f1f50ae15f62213230513": "ablation/train_decision_aligned_refdiff.py",
+    "613ba6cd16e3bb23d55b8123e3a4ede5bbcc9bb7cdd970d0633f84a721d64030": "ablation/train_transport_equivariant_adapter.py",
+    "d5dce166e084ffd2aac1e3c8752b89444912839ca2089a1e879225d048ece514": "ablation/train_judo_graft_stage4.py",
+    "2d1093497a28e6a0b43137dfd775920bec3959d5d625731faade12aec8f1dc77": "ablation/train_judo_caver_stage4b.py",
+    "9b6d122bb6b6c42865cf536d61100f17123ed2125d96de0325a520194dd095a0": "ablation/eval_judo_caver.py",
+    "4b4a4390d2e0ee5bfd4f2fcbf0b45d9deb74374312cd7a7c6db7d1d545c16b67": "ablation/analyze_refdiff_pilot.py",
+    "0f11bf4ac4b001879582c533f8d7fda56c550480b34000102632c9dd2b10c83c": "ablation/colab/judo_caver_factor_confirmatory_holdout_job.sh",
+    "605ef7245b457c79e8aae6b15540ccaf974ab4f7fc4a531fd3be88bdb055958e": "eval/eval_seg_mult.py"
+  }
+}

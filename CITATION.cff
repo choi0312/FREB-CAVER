@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use FREB-CAVER, cite this software artifact and the original JUDO and MMAD works."
+title: "FREB-CAVER: Model-native causal visual-evidence binding for industrial anomaly reasoning"
+type: software
+authors:
+  - name: "FREB-CAVER research contributors"
+repository-code: "https://github.com/choi0312/FREB-CAVER"
+url: "https://github.com/choi0312/FREB-CAVER"
+version: 0.1.0
+date-released: 2026-08-18
+keywords:
+  - industrial anomaly detection
+  - multimodal large language model
+  - visual grounding
+  - chain of thought
+  - JUDO
